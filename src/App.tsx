@@ -9,6 +9,8 @@ import {
 import { Provider } from "react-redux";
 import store from "./store";
 import LandingPage from "./pages/LandingPage";
+import EmployeesPage from "./pages/EmployeesPage";
+import AddEmployeePage from "./pages/AddEmployeePage";
 
 const App: React.FC = () => {
   return (
@@ -16,6 +18,8 @@ const App: React.FC = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/employees" element={<EmployeesPage />} />
+          <Route path="/add" element={<AddEmployeePage />} />
         </Routes>
       </BrowserRouter>
     </Provider>
