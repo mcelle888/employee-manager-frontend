@@ -1,5 +1,5 @@
 import React from "react";
-import { Employee } from "../services/api-responses.interface";
+import { Employee } from "../../services/api-responses.interface";
 
 interface EmployeeCardProps {
   employee: Employee;

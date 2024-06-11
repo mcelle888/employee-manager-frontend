@@ -1,4 +1,5 @@
 import { Employee } from './api-responses.interface';
+import { EmployeeFormValues } from '../schemas/employeeSchema';
 
 const baseUrl = "http://localhost:8080/employees";
 
@@ -23,7 +24,7 @@ export const getEmployeeById = async (id: number): Promise<Employee> => {
 };
 
 // Create a new employee
-export const createEmployee = async (employee: Omit<Employee, 'id'>): Promise<Employee> => {
+export const createEmployee = async (employee: EmployeeFormValues): Promise<Employee> => {
   const response = await fetch(baseUrl, {
     method: 'POST',
     headers: {

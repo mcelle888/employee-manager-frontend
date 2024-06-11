@@ -8,9 +8,9 @@ import {
 } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
-import LandingPage from "./pages/LandingPage";
-import EmployeesPage from "./pages/EmployeesPage";
-import AddEmployeePage from "./pages/AddEmployeePage";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import EmployeesPage from "./pages/EmployeePage/EmployeesPage";
+import AddEmployeePage from "./pages/AddEmployeePage/AddEmployeePage";
 
 const App: React.FC = () => {
   return (

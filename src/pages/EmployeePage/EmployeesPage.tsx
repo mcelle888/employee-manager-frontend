@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store";
-import { setEmployees } from "../store/slices/employeeSlice";
-import { getAllEmployees } from "../services/employee-services";
-import EmployeeCard from "../components/EmployeeCard";
+import { RootState } from "../../store";
+import { setEmployees } from "../../store/slices/employeeSlice";
+import { getAllEmployees } from "../../services/employee-services";
+import EmployeeCard from "../../components/EmployeeCard/EmployeeCard";
 import { Link } from "react-router-dom";
 
 const EmployeesPage: React.FC = () => {
