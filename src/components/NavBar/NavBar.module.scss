@@ -1,0 +1,27 @@
+.navbar {
+    display: flex;
+    flex-direction: column;
+    background-color: #EFF1F3;
+    padding: 1rem;
+}
+
+.navList {
+    display: flex;
+    list-style-type: none;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+
+.navLink {
+    text-decoration: none;
+    &:visited {
+        color: black;
+    }
+    &:hover {
+        color: rgb(173, 25, 25);
+        text-decoration: underline;
+        text-underline-offset: 5px;
+    }
+}
+
