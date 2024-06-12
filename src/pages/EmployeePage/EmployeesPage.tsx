@@ -5,6 +5,7 @@ import { setEmployees } from "../../store/slices/employeeSlice";
 import { getAllEmployees } from "../../services/employee-services";
 import EmployeeCard from "../../components/EmployeeCard/EmployeeCard";
 import { Link } from "react-router-dom";
+import styles from "./EmployeePage.module.scss"
 
 const EmployeesPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -23,12 +24,12 @@ const EmployeesPage: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={styles.employeeContainer}>
       <h1>Employees</h1>
       <Link to="/add">
         <button>Add New Employee</button>
       </Link>
-      <div className="employee-list">
+      <div className={styles.employeeList}>
         {employees.map((employee) => (
           <EmployeeCard key={employee.id} employee={employee} />
         ))}

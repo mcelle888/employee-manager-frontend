@@ -1,9 +1,13 @@
-
+import styles from './LandingPage.module.scss'
 
 const LandingPage = () => {
   return (
-    <div>Employee Management App</div>
-  )
+    <main className={styles.mainBody}>
+      <div className={styles.headerBox}>
+        <header className={styles.mainHeader}>Employee Management App</header>
+      </div>
+    </main>
+  );
 }
 
 export default LandingPage
