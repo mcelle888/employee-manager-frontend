@@ -8,6 +8,10 @@ interface EmployeeCardProps {
 const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee }) => {
   return (
     <div className="employee-card">
+      <img
+        src={employee.imageLink}
+        alt={`${employee.f_name} ${employee.l_name}`}
+      />
       <h3>
         {employee.f_name} {employee.l_name}
       </h3>

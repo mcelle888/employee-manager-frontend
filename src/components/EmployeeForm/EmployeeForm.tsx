@@ -195,6 +195,18 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
         </div>
 
         <div className={styles.field}>
+          <label>Image Link</label>
+          <input
+            className={errors.imageLink && styles.input_error}
+            type="text"
+            {...register("imageLink")}
+          />
+          <small className={styles.error_text}>
+            {errors?.imageLink?.message ?? "\u00A0"}
+          </small>
+        </div>
+
+        <div className={styles.field}>
           <button className={styles.createButton}>{mode} Employee</button>
         </div>
       </form>

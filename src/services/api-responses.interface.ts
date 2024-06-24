@@ -10,6 +10,7 @@ export interface Employee {
   dateStarted: string;
   dateEnded: string | null;
   address: Address;
+  imageLink: string;
 }
 
 export interface Address {
