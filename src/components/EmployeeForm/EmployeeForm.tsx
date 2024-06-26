@@ -37,10 +37,21 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<EmployeeFormValues>({
     defaultValues,
     resolver: zodResolver(employeeSchema),
   });
+
+  const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedStateId = parseInt(event.target.value, 10);
+    const selectedState = states.find((state) => state.id === selectedStateId);
+
+    if (selectedState) {
+      setValue("address.state.id", selectedState.id);
+      setValue("address.state.state", selectedState.state);
+    }
+  };
 
   return (
     <div className={styles.formContainer}>
@@ -179,8 +190,9 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
         <div className={styles.field}>
           <label>State</label>
           <select
-            className={errors.address?.stateId && styles.input_error}
-            {...register("address.stateId", { valueAsNumber: true })}
+            className={errors.address?.state?.id && styles.input_error}
+            {...register("address.state.id", { valueAsNumber: true })}
+            onChange={handleStateChange}
           >
             <option value="">Select State</option>
             {states.map((state) => (
@@ -190,7 +202,7 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
             ))}
           </select>
           <small className={styles.error_text}>
-            {errors.address?.stateId?.message ?? "\u00A0"}
+            {errors.address?.state?.id?.message ?? "\u00A0"}
           </small>
         </div>
 
