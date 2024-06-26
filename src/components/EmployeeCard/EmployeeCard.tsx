@@ -10,6 +10,7 @@ import {
 } from "../../services/employee-services";
 import { RootState } from "../../store";
 import { setEmployees } from "../../store/slices/employeeSlice";
+import { toast } from "react-toastify";
 
 interface EmployeeCardProps {
   employee: Employee;
@@ -28,10 +29,11 @@ const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee }) => {
         emp.id === updatedEmployee.id ? updatedEmployee : emp
       );
       dispatch(setEmployees(updatedEmployees));
-      alert("Employee updated successfully!");
+      toast.success("Employee updated successfully!", { autoClose: 2000 });
       setIsEditModalOpen(false);
     } catch (error) {
       console.error("Error updating employee:", error);
+      toast.error("Error updating employee.", { autoClose: 2000 });
     }
   };
 
@@ -42,10 +44,11 @@ const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee }) => {
         (emp) => emp.id !== employee.id
       );
       dispatch(setEmployees(updatedEmployees));
-      alert("Employee deleted successfully!");
+      toast.success("Employee deleted successfully!", { autoClose: 2000 });
       setIsDeleteModalOpen(false);
     } catch (error) {
       console.error("Error deleting employee:", error);
+      toast.error("Error deleting employee.", { autoClose: 2000 });
     }
   };
 

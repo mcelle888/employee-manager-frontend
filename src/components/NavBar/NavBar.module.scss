@@ -1,8 +1,11 @@
 .navbar {
     display: flex;
-    flex-direction: column;
-    background-color: #D8B4A0;
-    padding: 1rem;
+    flex-direction: row;
+    background-color: #669BBC;
+    padding: 0.3rem 2rem;
+    justify-content: space-between;
+    border-bottom: 2px solid white;
+    font-family: 'Futuristic Armour', sans-serif;
 }
 
 .navList {
@@ -10,6 +13,7 @@
     list-style-type: none;
     gap: 1rem;
     justify-content: flex-end;
+    align-items: center;
 }
 
 
@@ -25,3 +29,7 @@
     }
 }
 
+.badge {
+    height: 4rem;
+    width: 4rem;
+}

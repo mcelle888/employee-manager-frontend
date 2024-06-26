@@ -53,9 +53,26 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
     }
   };
 
+  const onSubmitHandler = (data: EmployeeFormValues) => {
+    const processedData = {
+      ...data,
+      phone: Number(data.phone),
+      address: {
+        ...data.address,
+        number: Number(data.address.number),
+        postcode: Number(data.address.postcode),
+        state: {
+          ...data.address.state,
+          id: Number(data.address.state.id),
+        },
+      },
+    };
+    onSubmit(processedData);
+  };
+
   return (
     <div className={styles.formContainer}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmitHandler)}>
         <div className={styles.field}>
           <label>First Name</label>
           <input
@@ -96,8 +113,8 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
           <label>Phone</label>
           <input
             className={errors.phone && styles.input_error}
-            type="number"
-            {...register("phone", { valueAsNumber: true })}
+            type="text"
+            {...register("phone")}
           />
           <small className={styles.error_text}>
             {errors?.phone?.message ?? "\u00A0"}
@@ -155,8 +172,8 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
           <label>Number</label>
           <input
             className={errors.address?.number && styles.input_error}
-            type="number"
-            {...register("address.number", { valueAsNumber: true })}
+            type="text"
+            {...register("address.number")}
           />
           <small className={styles.error_text}>
             {errors.address?.number?.message ?? "\u00A0"}
@@ -179,8 +196,8 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
           <label>Postcode</label>
           <input
             className={errors.address?.postcode && styles.input_error}
-            type="number"
-            {...register("address.postcode", { valueAsNumber: true })}
+            type="text"
+            {...register("address.postcode")}
           />
           <small className={styles.error_text}>
             {errors.address?.postcode?.message ?? "\u00A0"}
@@ -191,7 +208,7 @@ const EmployeeForm: React.FC<EmployeeFormProps> = ({
           <label>State</label>
           <select
             className={errors.address?.state?.id && styles.input_error}
-            {...register("address.state.id", { valueAsNumber: true })}
+            {...register("address.state.id")}
             onChange={handleStateChange}
           >
             <option value="">Select State</option>

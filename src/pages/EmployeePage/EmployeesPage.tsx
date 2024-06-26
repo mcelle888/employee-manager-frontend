@@ -25,7 +25,7 @@ const EmployeesPage: React.FC = () => {
 
   return (
     <div className={styles.employeeContainer}>
-      <h1>Employees</h1>
+      <h1>Employees &#128110;</h1>
       <Link to="/add">
         <button>Add New Employee</button>
       </Link>
