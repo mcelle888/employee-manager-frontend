@@ -2,7 +2,7 @@
 
 A full stack employee management application that allows users to manage their employees! 
 
-![Screenshot](src\assets\employee.png)
+![Screenshot](./src/assets/employee.png)
 
 ## Links
 [Link to Backend Repo](https://github.com/mcelle888/employee-manager-backend)
