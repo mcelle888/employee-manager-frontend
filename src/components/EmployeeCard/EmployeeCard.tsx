@@ -11,6 +11,7 @@ import {
 import { RootState } from "../../store";
 import { setEmployees } from "../../store/slices/employeeSlice";
 import { toast } from "react-toastify";
+import styles from "./EmployeeCard.module.scss";
 
 interface EmployeeCardProps {
   employee: Employee;
@@ -22,20 +23,27 @@ const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee }) => {
   const dispatch = useDispatch();
   const employees = useSelector((state: RootState) => state.employee.employees);
 
-  const handleEditEmployee = async (data: EmployeeFormValues) => {
-    try {
-      const updatedEmployee = await updateEmployeeService(employee.id, data);
-      const updatedEmployees = employees.map((emp) =>
-        emp.id === updatedEmployee.id ? updatedEmployee : emp
-      );
-      dispatch(setEmployees(updatedEmployees));
-      toast.success("Employee updated successfully!", { autoClose: 2000 });
-      setIsEditModalOpen(false);
-    } catch (error) {
-      console.error("Error updating employee:", error);
-      toast.error("Error updating employee.", { autoClose: 2000 });
-    }
-  };
+   const handleEditEmployee = async (data: EmployeeFormValues) => {
+     try {
+       const updatedEmployee = await updateEmployeeService(employee.id, {
+         ...data,
+         address: {
+           ...data.address,
+           id: employee.address.id,  
+         },
+         imageLink: data.imageLink || "",  
+       });
+       const updatedEmployees = employees.map((emp) =>
+         emp.id === updatedEmployee.id ? updatedEmployee : emp
+       );
+       dispatch(setEmployees(updatedEmployees));
+       toast.success("Employee updated successfully!", { autoClose: 2000 });
+       setIsEditModalOpen(false);
+     } catch (error) {
+       console.error("Error updating employee:", error);
+       toast.error("Error updating employee.", { autoClose: 2000 });
+     }
+   };
 
   const handleDeleteEmployee = async () => {
     try {
@@ -53,36 +61,43 @@ const EmployeeCard: React.FC<EmployeeCardProps> = ({ employee }) => {
   };
 
   return (
-    <div className="employee-card">
+    <div className={styles.employeeCard}>
       <img
+        className={styles.profileImg}
         src={employee.imageLink}
         alt={`${employee.f_name} ${employee.l_name}`}
       />
       <h3>
         {employee.f_name} {employee.l_name}
       </h3>
-      <p>Email: {employee.email}</p>
-      <p>Phone: {employee.phone}</p>
-      <p>Date of Birth: {new Date(employee.dob).toLocaleDateString()}</p>
-      <p>Full Time: {employee.fullTime ? "Yes" : "No"}</p>
-      <p>Permanent: {employee.permanent ? "Yes" : "No"}</p>
-      <p>Date Started: {new Date(employee.dateStarted).toLocaleDateString()}</p>
-      {employee.dateEnded && (
-        <p>Date Ended: {new Date(employee.dateEnded).toLocaleDateString()}</p>
-      )}
-      <div className="address">
-        <h4>Address</h4>
+      <div>
+        <p>Email: {employee.email}</p>
+        <p>Phone: {employee.phone}</p>
+        <p>Date of Birth: {new Date(employee.dob).toLocaleDateString()}</p>
+        <p>Full Time: {employee.fullTime ? "Yes" : "No"}</p>
+        <p>Permanent: {employee.permanent ? "Yes" : "No"}</p>
         <p>
-          {employee.address.number} {employee.address.address}
+          Date Started: {new Date(employee.dateStarted).toLocaleDateString()}
         </p>
-        <p>
-          {employee.address.postcode}, {employee.address.state.state}
-        </p>
+        {employee.dateEnded && (
+          <p>Date Ended: {new Date(employee.dateEnded).toLocaleDateString()}</p>
+        )}
+        <div className="address">
+          <h4>Address</h4>
+          <p>
+            {employee.address.number} {employee.address.address}
+          </p>
+          <p>
+            {employee.address.postcode}, {employee.address.state.state}
+          </p>
+        </div>
       </div>
-      <button onClick={() => setIsEditModalOpen(true)}>Edit Employee</button>
-      <button onClick={() => setIsDeleteModalOpen(true)}>
-        Delete Employee
-      </button>
+      <div className={styles.cardControls}>
+        <button onClick={() => setIsEditModalOpen(true)}>Edit Employee</button>
+        <button onClick={() => setIsDeleteModalOpen(true)}>
+          Delete Employee
+        </button>
+      </div>
 
       <Modal
         isOpen={isEditModalOpen}

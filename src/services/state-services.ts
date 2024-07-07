@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:8080/states";
+const baseUrl = "https://sunny-inn-428506-g6.ts.r.appspot.com/states";
 
 export interface State {
   id: number;

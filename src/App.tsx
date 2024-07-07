@@ -13,7 +13,7 @@ import EmployeesPage from "./pages/EmployeePage/EmployeesPage";
 import AddEmployeePage from "./pages/AddEmployeePage/AddEmployeePage";
 import NavBar from "./components/NavBar/NavBar";
 import "./App.scss";
- 
+
 const App: React.FC = () => {
   return (
     <Provider store={store}>

@@ -1,0 +1,26 @@
+.profileImg {
+    width: 12rem;
+    height: 18rem;
+    margin-top: 2rem;
+    border: 2px solid #FDF0D5;
+}
+
+
+.employeeCard {
+    margin: 1.5rem 0.5rem;
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #669BBC;
+    border: 4px solid #FDF0D5;
+    
+
+}
+
+.cardControls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}

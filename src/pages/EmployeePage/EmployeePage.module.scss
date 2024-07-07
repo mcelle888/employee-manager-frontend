@@ -3,6 +3,36 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    width: 100vw;
-    background-color: red;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+h1 {
+    font-family: 'Futuristic Armour', sans-serif;
+}
+
+.employeeHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    color: white;
+    font-size: 1.5rem;
+
+}
+
+.employeeSubHeader {
+    display: flex;
+    gap: 1rem;
+    font-size: 1rem;
+}
+
+.searchBar {
+    width: 25rem;
+}
+
+button {
+    padding: 0.3rem;
+    background-color: #FDF0D5;
 }

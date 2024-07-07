@@ -1,7 +1,7 @@
 import { Employee } from './api-responses.interface';
 import { EmployeeFormValues } from '../schemas/employeeSchema';
 
-const baseUrl = "http://localhost:8080/employees";
+const baseUrl = "https://sunny-inn-428506-g6.ts.r.appspot.com/employees";
 
 // Get all employees
 export const getAllEmployees = async (): Promise<Employee[]> => {

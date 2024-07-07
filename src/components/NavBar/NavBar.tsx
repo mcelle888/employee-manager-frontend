@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./NavBar.module.scss";
 
 const NavBar: React.FC = () => {
   return (
     <nav className={styles.navbar}>
-      <img className={styles.badge} src="src\assets\badge.png" alt="icon" />
+      <img className={styles.badge} src="/badge.png" alt="icon" />
       <ul className={styles.navList}>
         <li className={styles.navItem}>
           <Link to="/" className={styles.navLink}>
@@ -27,4 +27,4 @@ const NavBar: React.FC = () => {
   );
 };
 
-export default NavBar
+export default NavBar;
